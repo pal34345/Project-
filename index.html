@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adaptive Workplace OS — Microsoft Build AI 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="src/styles/main.css" />
+</head>
+<body>
+  <div id="app">
+
+    <!-- SIDEBAR NAV -->
+    <nav class="sidebar" id="sidebar">
+      <div class="sidebar-logo">
+        <div class="logo-mark">AW</div>
+        <span class="logo-text">WorkplaceOS</span>
+      </div>
+      <ul class="nav-links">
+        <li class="nav-item active" data-view="dashboard">
+          <span class="nav-icon">⬡</span>
+          <span>Dashboard</span>
+        </li>
+        <li class="nav-item" data-view="tasks">
+          <span class="nav-icon">◈</span>
+          <span>Task Engine</span>
+        </li>
+        <li class="nav-item" data-view="meetings">
+          <span class="nav-icon">◎</span>
+          <span>Meetings</span>
+        </li>
+        <li class="nav-item" data-view="audit">
+          <span class="nav-icon">◇</span>
+          <span>GenAI Audit</span>
+        </li>
+        <li class="nav-item" data-view="ideas">
+          <span class="nav-icon">◉</span>
+          <span>Innovation Bot</span>
+        </li>
+        <li class="nav-item" data-view="management">
+          <span class="nav-icon">▦</span>
+          <span>Management</span>
+        </li>
+      </ul>
+      <div class="sidebar-footer">
+        <div class="user-badge">
+          <div class="user-avatar">P</div>
+          <div class="user-info">
+            <span class="user-name">Pallab B.C.</span>
+            <span class="user-status">● Active</span>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="main-content">
+
+      <!-- TOP BAR -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <div class="breadcrumb" id="breadcrumb">Dashboard</div>
+          <div class="live-badge">
+            <span class="pulse"></span>AI Active
+          </div>
+        </div>
+        <div class="topbar-right">
+          <div class="search-box">
+            <span>⌕</span>
+            <input type="text" placeholder="Ask your OS anything…" id="globalSearch" />
+          </div>
+          <div class="notif-bell" title="Notifications">
+            <span>◐</span>
+            <span class="notif-count">3</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- VIEW CONTAINER -->
+      <div class="view-container" id="viewContainer">
+        <!-- Injected by JS -->
+      </div>
+
+    </main>
+
+    <!-- AI ASSISTANT BOT -->
+    <div class="bot-fab" id="botFab" title="AI Assistant">
+      <span class="bot-icon">◈</span>
+    </div>
+
+    <!-- BOT PANEL -->
+    <div class="bot-panel" id="botPanel">
+      <div class="bot-header">
+        <span class="bot-title">AI Assistant</span>
+        <button class="bot-close" id="botClose">✕</button>
+      </div>
+      <div class="bot-messages" id="botMessages">
+        <div class="bot-msg ai">
+          <div class="msg-bubble">Hello Pallab. I'm your Adaptive Workplace Assistant. Ask me anything — summarise a meeting, log an idea, check compliance, or draft an email.</div>
+        </div>
+      </div>
+      <div class="bot-input-row">
+        <input type="text" id="botInput" placeholder="Type a prompt…" />
+        <button id="botSend">→</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="src/data/mockdata.js"></script>
+  <script src="src/components/dashboard.js"></script>
+  <script src="src/components/tasks.js"></script>
+  <script src="src/components/meetings.js"></script>
+  <script src="src/components/audit.js"></script>
+  <script src="src/components/ideas.js"></script>
+  <script src="src/components/management.js"></script>
+  <script src="src/components/bot.js"></script>
+  <script src="src/app.js"></script>
+</body>
+</html>
