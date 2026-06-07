@@ -1,5 +1,118 @@
-# Project-
+Project-
 Hackerearth
+
+import { TextField, PrimaryButton } from '@fluentui/react';
+
+export default function Login() {
+  return (
+    <div style={{ padding: 50 }}>
+      <h2>Adaptive Workplace OS</h2>
+      <TextField label="Employee ID" />
+      <TextField label="Password" type="password" />
+      <PrimaryButton text="Login" onClick={() => window.location.href='/dashboard'} />
+    </div>
+  );
+}
+
+
+import { DetailsList } from '@fluentui/react';
+
+const tasks = [
+  { key: 1, name: 'Daily Task Auto-Submitted', status: '✓' },
+  { key: 2, name: 'Project Feasibility Score', status: '82%' }
+];
+
+export default function Dashboard() {
+  return (
+    <div style={{ padding: 50 }}>
+      <h2>Team Dashboard</h2>
+      <DetailsList items={tasks} />
+    </div>
+  );
+}
+
+import { TextField, PrimaryButton } from '@fluentui/react';
+import { useState } from 'react';
+
+export default function Assistant() {
+  const [prompt, setPrompt] = useState('');
+  const [response, setResponse] = useState('');
+
+  const handleSubmit = async () => {
+    const res = await fetch('/api/assistant', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ prompt })
+    });
+    const data = await res.json();
+    setResponse(data.reply);
+  };
+
+  return (
+    <div style={{ padding: 50 }}>
+      <h2>AI Assistant Bot</h2>
+      <TextField value={prompt} onChange={(e,v)=>setPrompt(v)} placeholder="Type your prompt..." />
+      <PrimaryButton text="Submit" onClick={handleSubmit} />
+      <p>{response}</p>
+    </div>
+  );
+}
+
+using Microsoft.AspNetCore.Mvc;
+
+[ApiController]
+[Route("api/[controller]")]
+public class AssistantController : ControllerBase
+{
+    [HttpPost]
+    public IActionResult Post([FromBody] PromptRequest request)
+    {
+        // TODO: Integrate Azure OpenAI here
+        var reply = $"AI Response to: {request.Prompt}";
+        return Ok(new { reply });
+    }
+}
+
+public class PromptRequest
+{
+    public string Prompt { get; set; }
+}
+
+using Microsoft.AspNetCore.Mvc;
+
+[ApiController]
+[Route("api/[controller]")]
+public class AuditController : ControllerBase
+{
+    [HttpPost("run")]
+    public IActionResult RunAudit([FromBody] AuditRequest request)
+    {
+        // TODO: Integrate GenAI Audit Engine
+        var complianceScore = 91; 
+        return Ok(new { score = complianceScore, report = "Audit Passed" });
+    }
+}
+
+public class AuditRequest
+{
+    public string Data { get; set; }
+}
+
+using Microsoft.AspNetCore.Mvc;
+
+[ApiController]
+[Route("api/[controller]")]
+public class ManagementController : ControllerBase
+{
+    [HttpGet("analytics")]
+    public IActionResult GetAnalytics()
+    {
+        // TODO: Pull from Azure SQL + Knowledge Repo
+        return Ok(new { productivity = 94, auditPassRate = 91, ideasReceived = 4 });
+    }
+}
+
+
 # Adaptive Workplace OS
 ### AI-Powered Productivity and Teamwork Reimagined
 
